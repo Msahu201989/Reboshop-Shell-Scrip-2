@@ -19,7 +19,7 @@ yum install -y mongodb-org &>>$LOG_FILE
     fi
 echo enabling mongodb and starting mongodb
 systemctl enable mongod &>>$LOG_FILE
-systemctl start mongodb &>>$LOG_FILE
+systemctl start mongod &>>$LOG_FILE
 if [ $? -eq 0 ] ;
  then
     echo status = Success
