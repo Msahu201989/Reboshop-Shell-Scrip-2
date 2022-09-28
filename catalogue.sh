@@ -19,6 +19,13 @@ if [ $? -eq 0 ] ;
                       fi
 echo Adding ROBOSHOP APplication USER
 useradd roboshop &>>$LOG_FILE
+if [ $? -eq 0 ] ;
+                   then
+                      echo status = Success
+                   else
+                      echo status = Failure
+                      exit 1
+                      fi
 echo download catalogue app code
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>$LOG_FILE
  if [ $? -eq 0 ] ;
@@ -60,13 +67,13 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
              echo setting up service in systemd
              mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
              echo daemon reload starting ctalogue service
-             systemctl daemon-reload $>>$LOG_FILE
-             systemctl start catalogue $>>$LOG_FILE
+             systemctl daemon-reload
+                          systemctl start catalogue $>>$LOG_FILE
              systemctl enable catalogue $>>$LOG_FILE
-             if [ $? -eq 0 ] ;
-                                                      then
-                                                          echo status = Success
-                                                       else
-                                                          echo status = Failure
-                                                          exit 1
-                                                          fi
+           if [ $? -eq 0 ] ;
+                      then
+                         echo status = Success
+                      else
+                         echo status = Failure
+                         exit 1
+                         fi
