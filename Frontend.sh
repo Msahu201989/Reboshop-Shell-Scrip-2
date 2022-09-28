@@ -11,7 +11,7 @@ then
     fi
 
 
-  echo Enabling nginx
+  echo Enabling nginx &>>$LOG_FILE
 systemctl enable nginx
 
 if [ $? -eq 0 ] ;
@@ -41,9 +41,9 @@ then
     echo status = Failure
     exit 1
     fi
-Echo deploying nginx conent to default location & removing old conent
+echo deploying nginx conent to default location & removing old conent
 cd /usr/share/nginx/html &>>$LOG_FILE
-rm -rf * &>>$LOG_FILE
+rm -rf *
 unzip /tmp/frontend.zip &>>$LOG_FILE
 mv frontend-main/static/* . &>>$LOG_FILE
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
