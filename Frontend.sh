@@ -1,4 +1,4 @@
-LOG_FILE=/tmp/frontend
+LOG_FILE = /tmp/frontend
 echo Installing Nginx
 yum install nginx &>>$LOG_FILE
 
