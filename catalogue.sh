@@ -1,4 +1,8 @@
 LOG_FILE=/tmp/catalogue
+ID=$(id -u)
+if [id -ne 0 ] ; then
+  echo please run this script with SUdo access
+
 echo downloading nodejs
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG_FILE
 if [ $? -eq 0 ] ;
@@ -18,7 +22,9 @@ if [ $? -eq 0 ] ;
                       exit 1
                       fi
 echo Adding ROBOSHOP APplication USER
-useradd roboshop &>>$LOG_FILE
+id roboshop &>>$LOG_FILE
+if [ $? -nq 0 ]; then
+  useradd roboshop &>>$LOG_FILE
 if [ $? -eq 0 ] ;
                    then
                       echo status = Success
@@ -26,6 +32,7 @@ if [ $? -eq 0 ] ;
                       echo status = Failure
                       exit 1
                       fi
+        fi
 echo download catalogue app code
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>$LOG_FILE
  if [ $? -eq 0 ] ;
