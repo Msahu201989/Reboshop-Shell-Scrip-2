@@ -20,7 +20,7 @@ if [ $? -eq 0 ] ;
                       fi
 echo Adding ROBOSHOP APplication USER
 id roboshop &>>$LOG_FILE
-if [ $? -nq 0 ]; then
+if [$? -ne 0] ; then
   useradd roboshop &>>$LOG_FILE
 if [ $? -eq 0 ] ;
                    then
@@ -81,7 +81,7 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
              mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
              echo daemon reload starting ctalogue service
              systemctl daemon-reload
-                          systemctl start catalogue $>>$LOG_FILE
+                          systemctl start catalogue &$>>$LOG_FILE
              systemctl enable catalogue $>>$LOG_FILE
            if [ $? -eq 0 ] ;
                       then
