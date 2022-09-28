@@ -1,6 +1,6 @@
 LOG_FILE=/tmp/frontend
 echo Installing Nginx
-yum install nginx &>>$LOG_FILE
+yum install nginx -y &>>$LOG_FILE
 
 if [ $? -eq 0 ] ;
 then
