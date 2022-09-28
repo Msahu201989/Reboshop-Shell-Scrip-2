@@ -37,7 +37,7 @@ if [ $? -eq 0 ] ;
     exit 1
     fi
   echo restarting mongodb
-  systemctl restart mongodb &>>$LOG_FILE
+  systemctl restart mongod &>>$LOG_FILE
     if [ $? -eq 0 ] ;
      then
         echo status = Success
