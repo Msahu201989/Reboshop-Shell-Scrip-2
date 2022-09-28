@@ -1,7 +1,4 @@
 LOG_FILE=/tmp/catalogue
-ID=$(id -u)
-if [id -ne 0 ] ; then
-  echo please run this script with SUdo access
 
 echo downloading nodejs
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG_FILE
