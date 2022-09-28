@@ -57,7 +57,7 @@ if [ $? -eq 0 ] ;
               fi
               cd /tmp
               echo unzip mongodb
-              unzip mongodb.zip &>>$LOG_FILE
+              #unzip mongodb.zip &>>$LOG_FILE
               if [ $? -eq 0 ] ;
                    then
                       echo status = Success
