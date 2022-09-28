@@ -40,6 +40,15 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
                       exit 1
                       fi
         cd /home/roboshop
+        echo removing content from ctalogue
+        rm -rf catalogue &>>$LOG_FILE
+         if [ $? -eq 0 ] ;
+                                   then
+                                      echo status = Success
+                                   else
+                                      echo status = Failure
+                                      exit 1
+                                      fi
         echo unzipping catalogue
         unzip /tmp/catalogue.zip &>>$LOG_FILE
         if [ $? -eq 0 ] ;
