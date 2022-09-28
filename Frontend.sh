@@ -41,8 +41,8 @@ then
     echo status = Failure
     exit 1
     fi
-echo deploying nginx conent to default location & removing old conent
-cd /usr/share/nginx/html &>>$LOG_FILE
+echo deploying nginx conent to default location
+cd /usr/share/nginx/html
 rm -rf *
 unzip /tmp/frontend.zip &>>$LOG_FILE
 mv frontend-main/static/* . &>>$LOG_FILE
