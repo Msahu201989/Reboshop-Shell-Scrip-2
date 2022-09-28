@@ -58,7 +58,7 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
                                              exit 1
                                              fi
              echo setting up service in systemd
-             mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service $>>$LOG_FILE
+             mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
              echo daemon reload starting ctalogue service
              systemctl daemon-reload $>>$LOG_FILE
              systemctl start catalogue $>>$LOG_FILE
