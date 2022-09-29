@@ -18,9 +18,10 @@ if [ $? -eq 0 ] ;
                       echo status = Failure
                       exit 1
                       fi
-echo Adding ROBOSHOP APplication USER
+
 id roboshop &>>$LOG_FILE
-if [$? -ne 0] ; then
+if [ $? -ne 0 ] ; then
+  echo add roboshop user
   useradd roboshop &>>$LOG_FILE
 if [ $? -eq 0 ] ;
                    then
