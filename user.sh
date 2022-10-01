@@ -4,6 +4,4 @@ source common.sh
 COMPONENT=user
 
 
-Nodejs
-
 
