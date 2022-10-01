@@ -2,12 +2,15 @@ LOG_FILE=/tmp/catalogue
 
 source common.sh
 
+echo Hello We are Installing Redis Now
 echo Downloading Redis Content
 curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>>$LOG_FILE
 statuscheck $?
 
 echo Installing Redis
-yum install redis-6.2.7 -y &>>$LOG_FILE
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$LOG_FILE
+dnf module enable redis:remi-6.2 -y
+yum install redis -y
 statuscheck $?
 
 echo updating ipaddress for Redis
