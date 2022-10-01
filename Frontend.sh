@@ -1,66 +1,32 @@
 LOG_FILE=/tmp/frontend
+source common.sh
+
 echo Installing Nginx
 yum install nginx -y &>>$LOG_FILE
 
-if [ $? -eq 0 ] ;
-then
-  echo status = Success
-  else
-    echo status = Failure
-    exit 1
-    fi
+statuscheck $?
 
 
   echo Enabling nginx &>>$LOG_FILE
 systemctl enable nginx
 
-if [ $? -eq 0 ] ;
-then
-  echo status = Success
-  else
-    echo status = Failure
-    exit 1
-    fi
+statuscheck $?
 
    echo starting nginx
 systemctl start nginx
 
-if [ $? -eq 0 ] ;
-then
-  echo status = Success
-  else
-    echo status = Failure
-    exit 1
-    fi
+statuscheck $?
 echo downloading nginx content
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>$LOG_FILE
-if [ $? -eq 0 ] ;
-then
-  echo status = Success
-  else
-    echo status = Failure
-    exit 1
-    fi
+statuscheck $?
 echo deploying nginx conent to default location
 cd /usr/share/nginx/html
 rm -rf *
 unzip /tmp/frontend.zip &>>$LOG_FILE
 mv frontend-main/static/* . &>>$LOG_FILE
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
-if [ $? -eq 0 ] ;
-then
-  echo status = Success
-  else
-    echo status = Failure
-    exit 1
-    fi
+statuscheck $?
 
 echo restarting nginx service
 systemctl restart nginx &>>$LOG_FILE
-if [ $? -eq 0 ] ;
-then
-  echo status = Success
-  else
-    echo status = Failure
-    exit 1
-    fi
+statuscheck $?
