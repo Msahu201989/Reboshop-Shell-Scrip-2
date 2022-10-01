@@ -9,8 +9,8 @@ statuscheck $?
 
 echo Installing Redis
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$LOG_FILE
-dnf module enable redis:remi-6.2 -y
-yum install redis -y
+dnf module enable redis:remi-6.2 -y &>>$LOG_FILE
+yum install redis -y &>>$LOG_FILE
 statuscheck $?
 
 echo updating ipaddress for Redis
