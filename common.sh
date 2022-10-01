@@ -24,7 +24,7 @@ statuscheck() {
    statuscheck $?
            fi
    echo download ${COMPONENT} app code
-   curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/${COMPONENT}/main.zip" &>>$LOG_FILE
+   curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG_FILE
    statuscheck $?
            cd /home/roboshop
            echo removing content from ctalogue
