@@ -19,7 +19,7 @@ statuscheck $?
 systemctl start mysqld &>>LOG_FILE
 statuscheck $?
 
-#DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
+# DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
 
 
 
