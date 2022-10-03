@@ -46,7 +46,7 @@ statuscheck $?
 
 echo "extract file"
 cd /tmp
-unzip mysql.zip &>>LOG_FILE
+unzip -o mysql.zip &>>LOG_FILE
 statuscheck $?
 
 echo "load schema"
