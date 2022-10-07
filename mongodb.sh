@@ -31,7 +31,7 @@ statuscheck $?
 
               cd /tmp
               echo unzip mongodb
-              #unzip mongodb.zip &>>$LOG_FILE
+              unzip mongodb.zip &>>$LOG_FILE
              statuscheck $?
 
                       echo lodaing schema database
