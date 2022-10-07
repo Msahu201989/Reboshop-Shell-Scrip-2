@@ -25,7 +25,8 @@ statuscheck $?
       curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>$LOG_FILE
       statuscheck $?
 
- cd /tmp
+cd /tmp
+
   echo unzip mongodb
   unzip mongodb.zip &>>$LOG_FILE
  statuscheck $?
