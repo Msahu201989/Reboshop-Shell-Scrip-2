@@ -28,10 +28,12 @@ statuscheck $?
              echo moving catalogue data
         mv catalogue-main catalogue &>>$LOG_FILE
          statuscheck $?
+
         cd /home/roboshop/catalogue &>>$LOG_FILE
         echo installing dependencies
                npm install &>>$LOG_FILE
             statuscheck $?
+
              echo setting up service in systemd
              mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service &>>$LOG_FILE
              echo daemon reload starting ctalogue service
