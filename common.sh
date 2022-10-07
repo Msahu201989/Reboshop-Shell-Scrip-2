@@ -92,4 +92,11 @@ SYSTEMD_SETUP
    echo "INstall Python dependenscie "
    pip3 install -r requirements.txt &>>${LOG_FILE}
    statuscheck $?
+
+   APP_UID=$(id -u roboshop)
+   APP_GID=$(id -g roboshop)
+
+   echo "Update Payment configuration file"
+   sed -i -e "/uid/ c uid = ${APP_UID}" -e "/gid/ c gid = ${APP_GID}" /home/roboshop/${COMPONENT}/${COMPONENT}.ini &>>${LOG_FILE}
+    statuscheck $?
  }
