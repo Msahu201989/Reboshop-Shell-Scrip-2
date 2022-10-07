@@ -55,6 +55,7 @@ SYSTEMD_SETUP(){
            echo Installing Nodejs
            yum install nodejs -y &>>$LOG_FILE
    statuscheck $?
+
 APP_PREREQ
 
            echo installing dependencies
@@ -78,6 +79,17 @@ APP_PREREQ
   statuscheck $?
 
 SYSTEMD_SETUP
+ }
 
+ PYTHON() {
+   echo "INSTALLING PYTHON 3"
+   yum install python36 gcc python3-devel -y &>>${LOG_FILE}
+   statuscheck $?
+   APP_PREREQ
 
+   cd /home/roboshop/${COMPONENT}
+
+   echo "INstall Python dependenscie "
+   pip3 install -r requirements.txt &>>${LOG_FILE}
+   statuscheck $?
  }
