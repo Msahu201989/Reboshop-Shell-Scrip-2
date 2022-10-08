@@ -33,10 +33,15 @@ cd /tmp
 
 cd mongodb-main
 
-    echo lodaing catalogue schema
-    mongo < catalogue.js &>>$LOG_FILE
-    statuscheck $?
+for schema in catalogue.js users.js ; do
+  mongo < ${schema} &>>LOG_FILE
+  done
 
-    echo  load user schema
-  mongo < users.js &>>$LOG_FILE
-statuscheck $?
+# For loop applied above for below comand
+  #  echo lodaing catalogue schema
+   # mongo < catalogue.js &>>$LOG_FILE
+    #statuscheck $?
+
+    #echo  load user schema
+  #mongo < users.js &>>$LOG_FILE
+#statuscheck $?
