@@ -19,9 +19,9 @@ APP_PREREQ() {
      echo download ${COMPONENT} app code
      curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG_FILE
      statuscheck $?
-             cd /home/roboshop
+
              echo removing content from ctalogue
-             rm -rf ${COMPONENT} &>>$LOG_FILE
+         cd /home/roboshop && rm -rf ${COMPONENT} &>>$LOG_FILE
             statuscheck $?
              echo unzipping ${COMPONENT} APP CODE
              unzip /tmp/${COMPONENT}.zip &>>$LOG_FILE
